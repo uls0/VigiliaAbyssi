@@ -101,6 +101,41 @@ h2 {
     font-weight: bold;
 }
 
+/* Estilos para Tablas Técnicas de Vigilia Abyssi */
+table.tech-spec {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.95rem;
+    background-color: var(--cve-gray);
+    border: 1px solid var(--border-color);
+}
+
+table.tech-spec th {
+    background-color: var(--cve-navy);
+    color: white;
+    text-align: left;
+    padding: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+table.tech-spec td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+table.tech-spec tr:last-child td {
+    border-bottom: none;
+}
+
+table.tech-spec .label {
+    font-weight: bold;
+    color: var(--cve-blue);
+    width: 35%;
+    background-color: #f0f2f5;
+}
+
 footer {
     background-color: var(--cve-navy);
     color: white;
