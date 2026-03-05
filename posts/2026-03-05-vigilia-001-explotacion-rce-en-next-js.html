@@ -1,0 +1,69 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vigilia 001 - Explotación RCE en Next.js | Vigilia Abyssi</title>
+        <link rel="stylesheet" href="../style.css?v=1.4">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>VIGILIA ABYSSI</h1>
+                <p class="subtitle">Inteligencia de Amenazas Digitales</p>
+            </div>
+        </header>
+        <main>
+            <article class="news-item">
+                <span class="date">2026-03-05</span>
+                <h2>Vigilia 001 - Explotación RCE en Next.js</h2>
+                <table class="tech-spec">
+  <thead>
+    <tr>
+      <th colspan="2" style="text-align:center; background-color:#f0f0f0;">VIGILIA ABYSSI - INFORME FORENSE TÉCNICO</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>ID del Incidente</strong></td>
+      <td>VIG-2023-X94</td>
+    </tr>
+    <tr>
+      <td><strong>Fecha de Detección</strong></td>
+      <td>24 de Octubre, 2023</td>
+    </tr>
+    <tr>
+      <td><strong>Vulnerabilidad Identificada</strong></td>
+      <td>Prototype Pollution (Contaminación del Prototipo)</td>
+    </tr>
+    <tr>
+      <td><strong>Infraestructura C2</strong></td>
+      <td>104.236.195.25</td>
+    </tr>
+    <tr>
+      <td><strong>Mecanismo de Payload</strong></td>
+      <td>Inyección child_process codificada en Base64</td>
+    </tr>
+    <tr>
+      <td><strong>Nivel de Severidad</strong></td>
+      <td>Crítico (CVSS 9.8)</td>
+    </tr>
+    <tr>
+      <td><strong>Estado Actual</strong></td>
+      <td>Análisis Forense en Progreso / Contención Activa</td>
+    </tr>
+  </tbody>
+</table>
+                <div class="content">
+                    <p>**1. Resumen Ejecutivo**</p><p>El presente documento detalla los hallazgos técnicos derivados del análisis forense realizado tras la detección de una intrusión activa en el entorno de aplicación objetivo. Se ha confirmado la explotación exitosa de una vulnerabilidad de tipo Prototype Pollution, la cual permitió a un actor adversario modificar la cadena de prototipos nativa del objeto JavaScript global. Esta manipulación facilitó la ejecución remota de código arbitrario (RCE) mediante la inyección de comandos en el módulo child_process.</p><p>**2. Análisis Técnico de la Vulnerabilidad**</p><p>La explotación se originó a través de un endpoint de API que procesaba datos JSON no validados provenientes del cliente. El atacante envió una estructura de objeto maliciosa diseñada para sobrescribir propiedades críticas en Object.prototype, específicamente apuntando a funciones de deserialización o configuración interna. Al modificar el prototipo raíz, se alteró el comportamiento esperado de las librerías dependientes, permitiendo la ejecución de lógica no autorizada.</p><p>Se identificó que la cadena de ataque culminó con una llamada al módulo child_process, un componente del entorno Node.js utilizado para ejecutar comandos del sistema operativo subyacente. El payload fue ofuscado mediante codificación Base64 para evadir los filtros de seguridad perimetrales y los sistemas de detección de intrusiones (IDS) basados en firmas estáticas.</p><p>**3. Infraestructura de Comando y Control (C2)**</p><p>Durante la fase de ejecución, el sistema comprometido estableció una conexión saliente hacia la dirección IP 104.236.195.25. El tráfico de red capturado muestra patrones consistentes con un canal de comunicación C2 persistente. Los paquetes analizados contienen datos cifrados que corresponden a instrucciones de exfiltración y mantenimiento de acceso. Se ha procedido al bloqueo inmediato de esta dirección en el firewall perimetral y se han notificado los registros de DNS para su mitigación global.</p><p>**4. Recomendaciones Inmediatas**</p><p>**5. Conclusión**</p><p>El incidente representa una amenaza significativa a la integridad y confidencialidad del sistema. La combinación de Prototype Pollution con inyección de comandos del sistema indica un actor sofisticado con capacidad para escalar privilegios. Se requiere una revisión completa de la arquitectura de seguridad antes de restablecer el servicio completo.</p><p>**Firma:**</p><p>Editor Jefe, Vigilia Abyssi</p><p>Departamento de Análisis Forense y Respuesta a Incidentes</p>
+                </div>
+                <br>
+                <a href="../index.html" style="color: #00599c; font-weight: bold; text-decoration: none;">← REGRESAR AL REPOSITORIO</a>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; 2026 Vigilia Abyssi - Sistema de Análisis Automatizado</p>
+        </footer>
+    </body>
+    </html>
+    

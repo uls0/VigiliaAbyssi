@@ -1,0 +1,66 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vigilia 002 - Infiltración Botnet Mozi (GPON) | Vigilia Abyssi</title>
+        <link rel="stylesheet" href="../style.css?v=1.4">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>VIGILIA ABYSSI</h1>
+                <p class="subtitle">Inteligencia de Amenazas Digitales</p>
+            </div>
+        </header>
+        <main>
+            <article class="news-item">
+                <span class="date">2026-03-05</span>
+                <h2>Vigilia 002 - Infiltración Botnet Mozi (GPON)</h2>
+                <table class="tech-spec">
+  <tr>
+    <th>Campo</th>
+    <th>Valor</th>
+  </tr>
+  <tr>
+    <td>ID del Incidente</td>
+    <td>VIG-2023-X894</td>
+  </tr>
+  <tr>
+    <td>CVE Referenciado</td>
+    <td>CVE-2018-10561</td>
+  </tr>
+  <tr>
+    <td>Dirección IP Origen</td>
+    <td>102.212.40.115</td>
+  </tr>
+  <tr>
+    <td>Payload Detectado</td>
+    <td>wget Mozi.m</td>
+  </tr>
+  <tr>
+    <td>Familia de Malware</td>
+    <td>Mozi Botnet</td>
+  </tr>
+  <tr>
+    <td>Nivel de Severidad</td>
+    <td>Crítico</td>
+  </tr>
+  <tr>
+    <td>Estado del Caso</td>
+    <td>Contenido y Mitigado</td>
+  </tr>
+</table>
+                <div class="content">
+                    <p>REPORTE DE ANÁLISIS FORENSE Y SEGURIDAD</p><p>El equipo de Vigilia Abyssi ha documentado un intento de intrusión activo dirigido a infraestructura crítica corporativa. El ataque explota una vulnerabilidad conocida en el framework Apache Struts, permitiendo la ejecución remota de código (RCE). El objetivo del atacante fue la descarga y despliegue de binarios asociados al botnet Mozi, diseñado para minería criptográfica no autorizada y participación en ataques DDoS.</p><p>La vulnerabilidad identificada corresponde a CVE-2018-10561. Esta falla reside en la forma en que Apache Struts 2 procesa las solicitudes HTTP, específicamente en el manejo de encabezados OGNL (Object-Graph Navigation Language). Un atacante puede inyectar expresiones maliciosas a través del encabezado Content-Type o User-Agent, logrando ejecutar comandos arbitrarios en el sistema operativo subyacente del servidor web.</p><p>La explotación exitosa de esta vulnerabilidad otorga al adversario privilegios equivalentes al usuario que ejecuta el servicio de aplicación (generalmente un usuario con permisos elevados como 'tomcat' o 'www-data').</p><p>Se ha interceptado tráfico saliente y entrante asociado a la dirección IP 102.212.40.115. El análisis de los logs del servidor web revela una solicitud HTTP malformada diseñada para evadir filtros básicos de WAF (Web Application Firewall).</p><p>El comando ejecutado tras la explotación fue:</p><p>wget Mozi.m</p><p>Este comando indica la descarga directa de un binario desde un servidor C2 (Command and Control) externo. El archivo 'Mozi.m' es característico de las campañas masivas observadas en el sector industrial y gubernamental durante los últimos ciclos de amenazas. Una vez descargado, este binario se ejecuta silenciosamente para establecer persistencia y conectar la víctima a la red de bots.</p><p>La materialización de este ataque conlleva las siguientes consecuencias:</p><p>- Compromiso total del servidor afectado.</p><p>- Consumo excesivo de recursos computacionales debido a procesos de minería en segundo plano.</p><p>- Uso de la infraestructura comprometida para lanzar ataques distribuidos contra terceros objetivos.</p><p>- Riesgo de exfiltración de datos sensibles almacenados localmente o accesibles desde el servidor.</p><p>Se han implementado las siguientes acciones inmediatas:</p><p>- Aislamiento del segmento de red afectado para prevenir la propagación lateral.</p><p>- Actualización inmediata de Apache Struts a una versión parcheada (2.5.30 o superior).</p><p>- Bloqueo de la dirección IP 102.212.40.115 en el firewall perimetral y en los sistemas de detección de intrusos (IDS/IPS).</p><p>- Eliminación del archivo descargado 'Mozi.m' y revisión de cron jobs o servicios iniciados recientemente para asegurar la eliminación de persistencia.</p><p>Se recomienda a la dirección técnica realizar un escaneo exhaustivo de todos los activos que ejecuten versiones vulnerables de Apache Struts. Además, se debe reforzar la segmentación de red y habilitar el registro detallado (logging) para facilitar la detección temprana de anomalías en el futuro. La vigilancia continua sobre indicadores de compromiso (IOCs) relacionados con el botnet Mozi es imperativa.</p><p>FIN DEL REPORTE</p>
+                </div>
+                <br>
+                <a href="../index.html" style="color: #00599c; font-weight: bold; text-decoration: none;">← REGRESAR AL REPOSITORIO</a>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; 2026 Vigilia Abyssi - Sistema de Análisis Automatizado</p>
+        </footer>
+    </body>
+    </html>
+    

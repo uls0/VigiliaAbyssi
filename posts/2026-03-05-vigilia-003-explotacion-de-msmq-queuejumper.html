@@ -1,0 +1,58 @@
+
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Vigilia 003 - Explotación de MSMQ (QueueJumper) | Vigilia Abyssi</title>
+        <link rel="stylesheet" href="../style.css?v=1.4">
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <h1>VIGILIA ABYSSI</h1>
+                <p class="subtitle">Inteligencia de Amenazas Digitales</p>
+            </div>
+        </header>
+        <main>
+            <article class="news-item">
+                <span class="date">2026-03-05</span>
+                <h2>Vigilia 003 - Explotación de MSMQ (QueueJumper)</h2>
+                <table class="tech-spec">
+  <tr>
+    <th>Identificador de Vulnerabilidad</th>
+    <td>CVE-2023-21554</td>
+  </tr>
+  <tr>
+    <th>Dirección IP Origen</th>
+    <td>137.184.78.212</td>
+  </tr>
+  <tr>
+    <th>Tipo de Amenaza</th>
+    <td>Ejecución Remota de Código (RCE)</td>
+  </tr>
+  <tr>
+    <th>Nivel de Privilegios Comprometidos</th>
+    <td>SISTEMA (SYSTEM)</td>
+  </tr>
+  <tr>
+    <th>Estado del Incidente</th>
+    <td>Critico / Activo</td>
+  </tr>
+  <tr>
+    <th>Entidad Emisora</th>
+    <td>Vigilia Abyssi - Unidad de Análisis Forense</td>
+  </tr>
+</table>
+                <div class="content">
+                    <p>REPORTE DE ANÁLISIS FORENSE Y EVALUACIÓN DE RIESGO</p><p>El presente documento detalla los hallazgos obtenidos tras la investigación de una actividad maliciosa dirigida contra infraestructura crítica. Se ha confirmado la explotación exitosa de la vulnerabilidad identificada como CVE-2023-21554. El ataque originado desde el nodo 137.184.78.212 logró establecer un canal de ejecución remota con privilegios elevados al nivel del sistema operativo (SYSTEM). Este escenario representa una violación severa de la integridad y confidencialidad de los activos informáticos afectados, requiriendo medidas de contención inmediatas.</p><p>La vulnerabilidad CVE-2023-21554 se clasifica como una falla crítica en el procesamiento de entradas no validadas dentro del servicio objetivo. El análisis forense indica que el atacante aprovechó esta brecha para inyectar comandos arbitrarios sin autenticación previa. La capacidad de ejecución bajo la cuenta SYSTEM implica un control total sobre el host comprometido, permitiendo la instalación de persistencia, exfiltración de datos sensibles y movimiento lateral dentro de la red interna.</p><p>Se ha correlacionado el tráfico de entrada con la dirección IP 137.184.78.212. Los registros del firewall muestran intentos repetidos de conexión en puertos asociados al servicio vulnerable antes de la confirmación de la intrusión. La firma de ataque coincide con patrones conocidos de explotación automatizada para esta CVE específica.</p><p>La elevación de privilegios a nivel SYSTEM compromete la cadena de custodia de los datos almacenados en el servidor afectado. Se han detectado las siguientes consecuencias potenciales:</p><p>- Acceso no autorizado a credenciales administrativas almacenadas en memoria o disco.</p><p>- Capacidad para modificar registros del sistema y ocultar la actividad maliciosa.</p><p>- Riesgo de propagación hacia otros segmentos de red mediante técnicas de movimiento lateral.</p><p>En virtud de la gravedad del incidente, Vigilia Abyssi dicta las siguientes acciones correctivas prioritarias:</p><p>La explotación confirmada de CVE-2023-21554 con acceso SYSTEM constituye un incidente de seguridad de alto impacto. Se requiere la activación del protocolo de respuesta a incidentes nivel 1. Vigilia Abyssi mantendrá el monitoreo activo de la dirección IP origen y proporcionará actualizaciones sobre nuevas variantes de explotación relacionadas con este vector de ataque.</p><p>Fin del Reporte.</p><p>Unidad de Análisis Forense - Vigilia Abyssi.</p>
+                </div>
+                <br>
+                <a href="../index.html" style="color: #00599c; font-weight: bold; text-decoration: none;">← REGRESAR AL REPOSITORIO</a>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; 2026 Vigilia Abyssi - Sistema de Análisis Automatizado</p>
+        </footer>
+    </body>
+    </html>
+    
